@@ -1,7 +1,7 @@
 # Feature: personal-landing
 
 Objective: bilingual (ES/EN) personal landing for David Balaguer Cervera, built with Astro, designed with impeccable, animated with GSAP, illustrated with anatomy-asset.
-Branch: `feat/personal-landing` · Delivery strategy: `ask-on-risk` (forecast ~1200 authored lines, chain decision pending at first oversized commit) · Test runner: `node --test` over the static build + `astro check`.
+Branch: `feat/personal-landing` · Delivery strategy: `ask-on-risk` → `chain_strategy=feature-branch-chain` (chosen 2026-10-29) · Test runner: `node --test` over the static build + `astro check`.
 
 ## Specs
 
@@ -27,8 +27,8 @@ Branch: `feat/personal-landing` · Delivery strategy: `ask-on-risk` (forecast ~1
 - T2 [S1,S8,S9,S11] Visual direction: concept-seed round + surface brief direction contract — inline — done (direction "Manual de montaje"; contract in `.impeccable/surfaces/src-pages-index-astro.md`, 6 blocks + seed verified)
 - T3 [S1,S5,S7,S10] Scaffold Astro static site with ES/EN routes, content module and build tests — inline — done (RED 11/11 fail → GREEN 11/11 pass; astro check 0 errors)
 - T4 [S2-S4,S6-S8,S10] Build landing sections per the direction contract — delegated (gentle-ai-worker) — done (RED 4 fail → GREEN 19/19; astro check 0; SVG inline path untested until T5)
-- T5 [S1,S9] Isometric SVG illustration(s) with anatomy-asset — delegated (gentle-ai-worker, background) — in progress
-- T6 [S1,S9] GSAP motion with reduced-motion fallback — inline — pending
+- T5 [S1,S9] Isometric SVG illustration(s) with anatomy-asset — delegated (gentle-ai-worker) — done (6 SVGs, xmllint clean, hooks present, parent visual check of hero + steps renders)
+- T6 [S1,S9] GSAP motion with reduced-motion fallback — delegated (gentle-ai-worker mvu51yep-3-hgf8, background) — in progress
 - T7 [S1,S9] Finish: detector, desktop/mobile captures, finish review, DESIGN.md — inline — pending
 
 ## Log
@@ -41,3 +41,7 @@ Branch: `feat/personal-landing` · Delivery strategy: `ask-on-risk` (forecast ~1
 - L6 (2026-10-29) Commit b286f5e (T1+T3): native assess unavailable (root commit has no base; "the review assess candidate has no pending changes"); deferred to the PR slice. T2 closed. Context backstop reached: T4 and T5 run as two parallel background workers with disjoint edit surfaces. Illustration contract: `src/assets/illustrations/hero-assembly.svg` + `step-1.svg`..`step-5.svg`, inlined via `import.meta.glob` so the page builds without them; GSAP hooks by element id (`part-a`, `part-b`, `part-c`, `part-d`, `arrow-c`, `socket-b`).
 - L7 (2026-10-29) T4 worker: RED 4 new tests fail as expected; @fontsource/atkinson-hyperlegible 5.3.0 installed. Hero said "Fig. 4" while AI is process step 3; decided: hero uses circle "3" / "Fig. 3" to match the steps (the sketch number was a placeholder).
 - L8 (2026-10-29) T4 done; parent re-ran `npm test`: 19/19 pass. "Integraciones" merged into part A. Worker killed every chrome.exe with taskkill (reported to the user) and left /tmp/t.cjs, /tmp/t2.cjs (deleted by parent).
+- L9 (2026-10-29) Running count past ~400 authored lines; user chose "Cadena sobre rama de feature (recomendado)" → chain_strategy=feature-branch-chain. Slices (one PR each, chained on a feature/tracker branch): P1 b286f5e scaffold + tests (T1, T3); P2 5e4060a landing sections (T2 brief, T4); P3 illustrations (T5); P4 motion (T6); P5 finish (T7). Native assess of 5e4060a deferred: blocked by T5's untracked files.
+- L10 (2026-10-29) User: "puedes seguir?". T6 launched in parallel with T5 polishing (disjoint surfaces; SVG hooks already present). Handoff forbids name-wide process kills and /tmp scratch.
+- L11 (2026-10-29) T6 RED: npm test 23 pass / 2 fail (bundled module script, es+en); hero hooks already inline. Decision: hero timeline ends with C seated in #socket-b (descent computed at runtime from geometry, arrow fades); no-JS and reduced motion show the authored exploded figure. Contract line "reduced motion shows the assembled state" reads as "the authored figure" for the hero; step drawings are authored assembled.
+- L12 (2026-10-29) T5 done. Parent viewed shots/hero.png and shots/steps.png: blue only on C, painter order correct. Accepted deviations: 2px strokes on steps, dark neutral ramp derived from ink. Weight: 6 SVGs ≈ 340 KB raw / ≈ 48 KB gzip (inlined; revisit in T7 optimize). Generator `.impeccable/assets-preview/build.mjs` imports the anatomy-asset kit by absolute path (dev-only); preview.html and shots/ are gitignored.
