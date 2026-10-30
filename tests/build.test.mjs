@@ -125,3 +125,10 @@ for (const locale of ["es", "en"]) {
     assert.match(process, /class="part part-c"/, "a process step should expose its .part-c group");
   });
 }
+
+test("both locales declare an SVG favicon that ships in the build", () => {
+  for (const locale of ["es", "en"]) {
+    assert.match(read(locale), /<link[^>]*rel="icon"[^>]*href="\/favicon\.svg"/);
+  }
+  assert.ok(existsSync("dist/favicon.svg"), "dist/favicon.svg should exist");
+});
