@@ -11,6 +11,8 @@ interface Props {
 }
 
 const { locale, title, description } = Astro.props;
+// Search engines expect fully qualified hreflang URLs.
+const absolute = (path: string) => new URL(path, Astro.site).href;
 ---
 <!doctype html>
 <html lang={locale}>
@@ -21,8 +23,8 @@ const { locale, title, description } = Astro.props;
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    {locales.map((l) => <link rel="alternate" hreflang={l} href={localePath[l]} />)}
-    <link rel="alternate" hreflang="x-default" href={localePath.es} />
+    {locales.map((l) => <link rel="alternate" hreflang={l} href={absolute(localePath[l])} />)}
+    <link rel="alternate" hreflang="x-default" href={absolute(localePath.es)} />
     <slot name="head" />
   </head>
   <body>

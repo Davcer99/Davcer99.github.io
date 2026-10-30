@@ -158,3 +158,14 @@ for (const locale of ["es", "en"]) {
     assert.doesNotMatch(footer, /ilustrativos|illustrative/i);
   });
 }
+
+const SITE = "https://davcer99.github.io";
+
+for (const locale of ["es", "en"]) {
+  test(`${locale}: hreflang alternates are absolute URLs on the GitHub Pages site`, () => {
+    const html = read(locale);
+    for (const [l, path] of [["es", "/"], ["en", "/en/"], ["x-default", "/"]]) {
+      assert.match(html, new RegExp(`<link[^>]*rel="alternate"[^>]*hreflang="${l}"[^>]*href="${SITE}${path}"`));
+    }
+  });
+}
