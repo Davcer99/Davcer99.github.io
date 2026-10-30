@@ -293,7 +293,7 @@ Bold 0.8125rem words on a paper-colored chip placed beside each circled letter i
 The closing "Questions?" block: a 3px ink border, fluid padding, one oversized word, a short paragraph, the two buttons, and the plain email address underlined as a link. It is the manual's last page; it holds the primary action again.
 
 ### Footer
-A 3px ink rule, the name and model line in bold on the left, and a Pencil Grey note on the right that states the drawings are illustrative and show no real projects or clients.
+A 3px ink rule and the name and model line in bold.
 
 ### Motion
 
@@ -341,4 +341,4 @@ Authored with the anatomy-asset skill; the generator lives in `.impeccable/asset
 - **Don't** add icons from a glyph font or icon library; if a pictogram is needed, draw it in the manual's isometric language.
 - **Don't** add a dark theme, neon or terminal styling.
 - **Don't** loop, scrub or parallax anything; don't hide content in CSS waiting for a script.
-- **Don't** invent evidence in drawings or captions (clients, metrics, named projects). Illustrations stay labeled as illustrative.
+- **Don't** invent evidence in drawings or captions (clients, metrics, named projects). Drawings depict the kit metaphor, never a specific project or client.

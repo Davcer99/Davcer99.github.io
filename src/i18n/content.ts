@@ -53,7 +53,6 @@ export interface Content {
     secondaryCta: string;
     emailLabel: string;
   };
-  footer: { note: string };
 }
 
 export const content: Record<Locale, Content> = {
@@ -145,9 +144,6 @@ export const content: Record<Locale, Content> = {
       secondaryCta: "Ver LinkedIn",
       emailLabel: "Correo",
     },
-    footer: {
-      note: "Los dibujos son ilustrativos: no representan proyectos ni clientes reales.",
-    },
   },
   en: {
     meta: {
@@ -236,9 +232,6 @@ export const content: Record<Locale, Content> = {
       cta: "Email me",
       secondaryCta: "View LinkedIn",
       emailLabel: "Email",
-    },
-    footer: {
-      note: "The drawings are illustrative: they do not depict real projects or clients.",
     },
   },
 };

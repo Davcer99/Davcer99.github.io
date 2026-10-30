@@ -150,3 +150,11 @@ for (const locale of ["es", "en"]) {
     assert.match(sliceSection(read(locale), "intro"), /--ratio: 637\.3 \/ 548\.8/);
   });
 }
+
+for (const locale of ["es", "en"]) {
+  test(`${locale}: the footer carries no illustration disclaimer`, () => {
+    const footer = read(locale).match(/<footer[\s\S]*?<\/footer>/)?.[0] ?? "";
+    assert.ok(footer.length > 0, "footer should render");
+    assert.doesNotMatch(footer, /ilustrativos|illustrative/i);
+  });
+}
