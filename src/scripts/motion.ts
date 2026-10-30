@@ -1,5 +1,6 @@
 // Landing motion: the hero AI module descends into its socket on load, and each process drawing assembles once as it scrolls in.
-// Progressive enhancement: nothing is hidden by CSS. Elements are offset only by the tweens below, right before they play.
+// Progressive enhancement: nothing is hidden by CSS. The hero is never hidden; step parts are offset by JS from the
+// moment the script runs until their drawing scrolls into view, and printing reverts every tween first.
 // Without JS or with reduced motion the drawings stay exactly as authored (the exploded manual figure); the only
 // intended difference after the hero plays is that C is seated and the arrow is gone.
 import { gsap } from "gsap";
@@ -84,6 +85,21 @@ function heroAssembly(): void {
     },
     "seat",
   );
+  // C's word label travels with C. Its top is a percentage of the drawing, so the seated label survives resizes.
+  const label = document.querySelector<HTMLElement>('[data-figure="hero-assembly"] [data-callout="C"]');
+  if (label) {
+    const authoredY = Number(label.dataset.y);
+    tl.to(
+      label,
+      {
+        top: `${((authoredY + tip.y - tail.y) / svg.viewBox.baseVal.height) * 100}%`,
+        duration: clock.duration.seat,
+        ease: clock.ease.seat,
+      },
+      "seat",
+    );
+  }
+
   // The arrow has done its job once the module covers it.
   tl.to([arrow, ...head], { opacity: 0, duration: clock.duration.seat, ease: clock.ease.fade }, "seat");
 
@@ -157,6 +173,9 @@ mm.add("(prefers-reduced-motion: no-preference)", () => {
   heroAssembly();
   stepAssemblies();
 });
+
+// A printout or PDF taken before scrolling must show every drawing assembled, not parts still waiting off-stage.
+addEventListener("beforeprint", () => mm.revert());
 
 // Web fonts change line wrapping, which moves the step figures; recompute trigger positions once they are in.
 document.fonts?.ready.then(() => ScrollTrigger.refresh());

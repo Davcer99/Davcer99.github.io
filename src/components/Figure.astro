@@ -20,6 +20,7 @@ const svg = raw?.replace(/^\s*<\?xml[^>]*\?>\s*/, "");
 <figure class="figure" data-anim="figure" data-figure={name}>
   <div class="drawing" aria-hidden="true" style={`--ratio: ${ratio}`} data-fallback={svg ? undefined : ""}>
     {svg && <Fragment set:html={svg} />}
+    <slot />
   </div>
   <figcaption>{caption}</figcaption>
 </figure>

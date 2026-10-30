@@ -132,3 +132,21 @@ test("both locales declare an SVG favicon that ships in the build", () => {
   }
   assert.ok(existsSync("dist/favicon.svg"), "dist/favicon.svg should exist");
 });
+
+const heroLabels = {
+  es: { A: "Backend", B: "Frontend", C: "Integración IA", D: "Automatización" },
+  en: { A: "Backend", B: "Frontend", C: "AI integration", D: "Automation" },
+};
+
+for (const locale of ["es", "en"]) {
+  test(`${locale}: the hero drawing names each part next to its letter`, () => {
+    const intro = sliceSection(read(locale), "intro");
+    for (const [letter, name] of Object.entries(heroLabels[locale])) {
+      assert.match(intro, new RegExp(`<span[^>]*data-callout="${letter}"[^>]*>${name}</span>`));
+    }
+  });
+
+  test(`${locale}: the hero figure frame matches the cropped drawing ratio`, () => {
+    assert.match(sliceSection(read(locale), "intro"), /--ratio: 637\.3 \/ 548\.8/);
+  });
+}

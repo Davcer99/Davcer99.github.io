@@ -5,6 +5,7 @@ import PartGlyph from "./PartGlyph.astro";
 import { content } from "../i18n/content";
 import { localePath, type Locale } from "../i18n/locales";
 import { profile } from "../data/profile";
+import { heroCallouts, heroCalloutRadius, heroViewBox } from "../data/hero-callouts";
 
 interface Props {
   locale: Locale;
@@ -14,6 +15,23 @@ const { locale } = Astro.props;
 const t = content[locale];
 const other: Locale = locale === "es" ? "en" : "es";
 const mailto = `mailto:${profile.email}`;
+const heroRatio = `${heroViewBox.width} / ${heroViewBox.height}`;
+
+// Word labels sit beside the drawing's circled letters, positioned in percentages of the viewBox so they scale with it.
+const pct = (value: number, total: number) => `${((value / total) * 100).toFixed(3)}%`;
+const heroLabels = t.capabilities.parts.map((part) => {
+  const { x, y, side } = heroCallouts[part.letter as keyof typeof heroCallouts];
+  const r = heroCalloutRadius;
+  const left = side === "right" ? x + r + 6 : x - r;
+  const top = side === "right" ? y : side === "below" ? y + r + 4 : y - r - 4;
+  return {
+    letter: part.letter,
+    name: part.name,
+    side,
+    y,
+    style: `left: ${pct(left, heroViewBox.width)}; top: ${pct(top, heroViewBox.height)}`,
+  };
+});
 ---
 <Base locale={locale} title={t.meta.title} description={t.meta.description}>
   <header class="bar">
@@ -59,7 +77,11 @@ const mailto = `mailto:${profile.email}`;
 
       <div class="intro__figure">
         <span class="circle intro__mark" aria-hidden="true">{t.hero.figure.mark}</span>
-        <Figure name="hero-assembly" caption={t.hero.figure.caption} ratio="33 / 32" />
+        <Figure name="hero-assembly" caption={t.hero.figure.caption} ratio={heroRatio}>
+          {heroLabels.map((label) => (
+            <span class="callout" data-callout={label.letter} data-side={label.side} data-y={label.y} style={label.style}>{label.name}</span>
+          ))}
+        </Figure>
       </div>
     </section>
 
@@ -282,6 +304,28 @@ const mailto = `mailto:${profile.email}`;
     position: relative;
     padding: 2.5rem 0 0 2.5rem;
   }
+  /* Callout words: ink on paper beside each circled letter, the way a manual names its parts. */
+  .callout {
+    position: absolute;
+    padding: 0.125rem 0.25rem;
+    background: var(--paper);
+    font-size: 0.8125rem;
+    font-weight: 700;
+    line-height: 1.2;
+    white-space: nowrap;
+  }
+  .callout[data-side="right"] {
+    transform: translateY(-50%);
+  }
+  .callout[data-side="above"] {
+    transform: translateY(-100%);
+  }
+  /* On narrow screens the drawing is too small to carry words; the parts list right above it names every part. */
+  @media (max-width: 35.99rem) {
+    .callout {
+      display: none;
+    }
+  }
   .intro__mark {
     position: absolute;
     top: 0;
@@ -490,7 +534,7 @@ const mailto = `mailto:${profile.email}`;
     }
     .step__figure {
       grid-column: auto;
-      max-width: none;
+      max-width: 30rem;
     }
     .panel {
       grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
