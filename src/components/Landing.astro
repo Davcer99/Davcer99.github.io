@@ -1,6 +1,8 @@
 ---
 import Base from "../layouts/Base.astro";
-import { content, type CapabilityId } from "../i18n/content";
+import Figure from "./Figure.astro";
+import PartGlyph from "./PartGlyph.astro";
+import { content } from "../i18n/content";
 import { localePath, type Locale } from "../i18n/locales";
 import { profile } from "../data/profile";
 
@@ -12,45 +14,487 @@ const { locale } = Astro.props;
 const t = content[locale];
 const other: Locale = locale === "es" ? "en" : "es";
 const mailto = `mailto:${profile.email}`;
-const capabilityOrder: CapabilityId[] = ["frontend", "backend", "ai", "automation", "integrations"];
 ---
 <Base locale={locale} title={t.meta.title} description={t.meta.description}>
-  <header>
-    <span>{profile.name}</span>
-    <nav>
-      <a href="#capabilities">{t.nav.capabilities}</a>
-      <a href="#process">{t.nav.process}</a>
-      <a href={localePath[other]} hreflang={other} lang={other}>{t.nav.switchTo}</a>
-    </nav>
+  <header class="bar">
+    <div class="wrap">
+      <div class="bar__inner">
+        <p class="model">{t.header.model}</p>
+        <nav aria-label={t.header.navLabel}>
+          <a href="#capabilities">{t.header.nav.capabilities}</a>
+          <a href="#process">{t.header.nav.process}</a>
+          <a href="#contact">{t.header.nav.contact}</a>
+          <a class="switch" href={localePath[other]} hreflang={other} lang={other}>{t.header.nav.switchTo}</a>
+        </nav>
+      </div>
+    </div>
   </header>
+
   <main>
-    <section id="intro">
-      <h1>{t.hero.headline}</h1>
-      <p>{t.hero.lede}</p>
-      <a href={mailto}>{t.hero.primaryCta}</a>
-      <a href={profile.linkedin} rel="me noopener">{t.hero.secondaryCta}</a>
-      <p>{t.hero.availability}</p>
+    <section id="intro" class="intro wrap">
+      <div class="intro__copy">
+        <h1>{profile.name}</h1>
+        <p class="headline">{t.hero.headline}</p>
+        <p class="lede">{t.hero.lede}</p>
+
+        <div class="parts">
+          <p class="parts__title" id="parts-title">{t.hero.partsHeading}</p>
+          <ul aria-labelledby="parts-title" role="list">
+            {t.capabilities.parts.map((part) => (
+              <li data-part={part.letter}>
+                <span class="parts__qty">{t.hero.quantity}</span>
+                <span class="parts__letter" aria-hidden="true">{part.letter}</span>
+                <span class="parts__name">{part.name}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div class="help">
+          <a class="btn" href={mailto}>{t.hero.primaryCta}</a>
+          <a class="btn btn--ghost" href={profile.linkedin} rel="me noopener">{t.hero.secondaryCta}</a>
+          <p class="help__availability">{t.hero.availability}</p>
+        </div>
+      </div>
+
+      <div class="intro__figure">
+        <span class="circle intro__mark" aria-hidden="true">{t.hero.figure.mark}</span>
+        <Figure name="hero-assembly" caption={t.hero.figure.caption} ratio="33 / 32" />
+      </div>
     </section>
-    <section id="capabilities">
-      <h2>{t.capabilities.heading}</h2>
-      <p>{t.capabilities.intro}</p>
-      <ol>
-        {capabilityOrder.map((id) => (
-          <li><h3>{t.capabilities.items[id].name}</h3><p>{t.capabilities.items[id].summary}</p></li>
+
+    <section id="capabilities" class="section wrap">
+      <div class="section__head">
+        <h2>{t.capabilities.heading}</h2>
+        <p>{t.capabilities.intro}</p>
+      </div>
+      <ol class="parts-list" role="list">
+        {t.capabilities.parts.map((part) => (
+          <li data-part={part.letter}>
+            <span class="circle parts-list__letter" aria-hidden="true">{part.letter}</span>
+            <div class="parts-list__glyph"><PartGlyph letter={part.letter} /></div>
+            <div class="parts-list__text">
+              <h3>{part.name}</h3>
+              <p>{part.summary}</p>
+            </div>
+            <span class="parts-list__qty">{t.hero.quantity}</span>
+          </li>
         ))}
       </ol>
     </section>
-    <section id="process">
-      <h2>{t.process.heading}</h2>
-      <ol>
-        {t.process.steps.map((step) => <li><h3>{step.name}</h3><p>{step.detail}</p></li>)}
+
+    <section id="process" class="section wrap">
+      <div class="section__head">
+        <h2>{t.process.heading}</h2>
+        <p>{t.process.intro}</p>
+      </div>
+      <ol class="steps" role="list">
+        {t.process.steps.map((step, index) => (
+          <li class="step" data-step={index + 1} data-ai={step.ai ? "" : undefined}>
+            <span class="circle step__num" aria-hidden="true">{index + 1}</span>
+            <div class="step__text">
+              <h3><span class="visually-hidden">{t.process.stepLabel} {index + 1}: </span>{step.name}</h3>
+              <p>{step.detail}</p>
+            </div>
+            <div class="step__figure">
+              <Figure name={`step-${index + 1}`} caption={`${t.process.resultLabel}: ${step.result}`} />
+            </div>
+          </li>
+        ))}
       </ol>
     </section>
-    <section id="contact">
-      <h2>{t.contact.heading}</h2>
-      <p>{t.contact.body}</p>
-      <a href={mailto}>{t.contact.cta}</a>
-      <a href={profile.linkedin} rel="me noopener">{t.contact.secondaryCta}</a>
+
+    <section id="contact" class="section wrap">
+      <div class="panel">
+        <h2>{t.contact.heading}</h2>
+        <div class="panel__body">
+          <p>{t.contact.body}</p>
+          <div class="panel__actions">
+            <a class="btn" href={mailto}>{t.contact.cta}</a>
+            <a class="btn btn--ghost" href={profile.linkedin} rel="me noopener">{t.contact.secondaryCta}</a>
+          </div>
+          <p class="panel__mail">
+            <span>{t.contact.emailLabel}</span>
+            <a href={mailto}>{profile.email}</a>
+          </p>
+        </div>
+      </div>
     </section>
   </main>
+
+  <footer class="foot">
+    <div class="wrap">
+      <div class="foot__inner">
+        <p class="foot__name">{profile.name} · {t.header.model}</p>
+        <p class="foot__note">{t.footer.note}</p>
+      </div>
+    </div>
+  </footer>
 </Base>
+
+<style>
+  .wrap {
+    width: 100%;
+    max-width: var(--page);
+    margin-inline: auto;
+    padding-inline: var(--gutter);
+  }
+
+  /* Header: model line, in-page nav, language switch, 3px ink rule. */
+  .bar {
+    padding-top: clamp(1.25rem, 3vw, 2.5rem);
+  }
+  .bar__inner {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 0.25rem 2rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 3px solid var(--ink);
+  }
+  .model {
+    font-size: 0.875rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 1.5rem;
+    font-size: 0.9375rem;
+  }
+  nav a {
+    padding-block: 0.5rem;
+    text-decoration: none;
+  }
+  nav a:hover {
+    text-decoration: underline;
+  }
+  .switch {
+    font-weight: 700;
+  }
+
+  /* Intro: copy 5/12, assembly drawing 7/12. */
+  .intro {
+    display: grid;
+    gap: 2.5rem;
+    padding-top: clamp(2rem, 5vw, 4rem);
+    padding-bottom: var(--section-space);
+  }
+  .intro__copy {
+    display: grid;
+    align-content: start;
+    gap: 1.25rem;
+  }
+  h1 {
+    font-size: clamp(2.25rem, 5vw, 4rem);
+    line-height: 1.02;
+    letter-spacing: -0.01em;
+  }
+  .headline {
+    max-width: 24ch;
+    font-size: clamp(1.375rem, 2.2vw, 1.75rem);
+    font-weight: 700;
+    line-height: 1.2;
+  }
+  .lede {
+    max-width: 52ch;
+    font-size: clamp(1.0625rem, 1.5vw, 1.25rem);
+    line-height: 1.5;
+  }
+
+  .parts {
+    max-width: 33rem;
+    margin-top: 0.5rem;
+    border: 2px solid var(--ink);
+  }
+  .parts__title {
+    padding: 0.625rem 0.875rem;
+    border-bottom: 2px solid var(--ink);
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+  .parts ul {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .parts li {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    min-width: 0;
+    padding: 0.625rem 0.875rem;
+    border-top: 1px solid var(--rule);
+    font-size: 1rem;
+  }
+  .parts li:nth-child(-n + 2) {
+    border-top: 0;
+  }
+  .parts li:nth-child(odd) {
+    border-right: 1px solid var(--rule);
+  }
+  .parts__qty {
+    min-width: 1.75rem;
+    font-weight: 700;
+  }
+  .parts__letter {
+    font-weight: 700;
+  }
+  .parts__name {
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+
+  /* On narrow screens the actions come before the parts list so the first viewport holds name, headline and CTA.
+     The parts list has no interactive content, so keyboard order is unaffected. */
+  .help {
+    order: 1;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem 1rem;
+  }
+  .parts {
+    order: 2;
+  }
+  @media (max-width: 29.99rem) {
+    .parts ul {
+      grid-template-columns: 1fr;
+    }
+    .parts li:nth-child(2) {
+      border-top: 1px solid var(--rule);
+    }
+    .parts li:nth-child(odd) {
+      border-right: 0;
+    }
+  }
+  .help__availability {
+    flex-basis: 100%;
+    font-size: 0.9375rem;
+    font-weight: 700;
+  }
+
+  .intro__figure {
+    position: relative;
+    padding: 2.5rem 0 0 2.5rem;
+  }
+  .intro__mark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3.5rem;
+    height: 3.5rem;
+    font-size: 1.75rem;
+  }
+
+  /* Sections share one manual-page rhythm: ink rule, heading, intro, content. */
+  .section {
+    padding-bottom: var(--section-space);
+  }
+  .section__head {
+    display: grid;
+    gap: 0.75rem 3rem;
+    margin-bottom: clamp(1.75rem, 4vw, 3rem);
+    padding-top: 1.25rem;
+    border-top: 2px solid var(--ink);
+  }
+  h2 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+  }
+  .section__head p {
+    max-width: 48ch;
+    font-size: 1.125rem;
+  }
+
+  /* Capabilities: illustrated parts list. */
+  .parts-list {
+    border: 2px solid var(--ink);
+  }
+  .parts-list li {
+    display: grid;
+    grid-template-areas:
+      "letter glyph qty"
+      "text text text";
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 1rem 1.25rem;
+    padding: 1.25rem;
+    border-top: 1px solid var(--rule);
+  }
+  .parts-list li:first-child {
+    border-top: 0;
+  }
+  .parts-list__letter {
+    grid-area: letter;
+    width: 3rem;
+    height: 3rem;
+    font-size: 1.5rem;
+  }
+  .parts-list__glyph {
+    grid-area: glyph;
+    width: 5.5rem;
+  }
+  .parts-list__text {
+    grid-area: text;
+  }
+  .parts-list__text h3 {
+    font-size: 1.5rem;
+    line-height: 1.15;
+  }
+  .parts-list__text p {
+    max-width: 55ch;
+    margin-top: 0.375rem;
+  }
+  .parts-list__qty {
+    grid-area: qty;
+    font-size: 1.25rem;
+    font-weight: 700;
+  }
+
+  /* Process: numbered assembly steps, one figure each. */
+  .step {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1.25rem;
+    padding-block: 2rem;
+    border-top: 1px solid var(--rule);
+  }
+  .step:first-child {
+    border-top: 0;
+    padding-top: 0;
+  }
+  .step__num {
+    width: 3.5rem;
+    height: 3.5rem;
+    font-size: 1.75rem;
+  }
+  .step[data-ai] .step__num {
+    border-color: var(--ink);
+    background: var(--blue);
+    color: #fff;
+  }
+  .step__text h3 {
+    font-size: 1.625rem;
+    line-height: 1.15;
+  }
+  .step__text p {
+    max-width: 40ch;
+    margin-top: 0.5rem;
+  }
+  .step__figure {
+    grid-column: 1 / -1;
+    max-width: 38rem;
+  }
+
+  /* Contact: the manual's help panel. */
+  .panel {
+    display: grid;
+    gap: 1.5rem 3rem;
+    padding: clamp(1.5rem, 4vw, 3.5rem);
+    border: 3px solid var(--ink);
+  }
+  .panel h2 {
+    font-size: clamp(2.75rem, 8vw, 6rem);
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+  .panel__body {
+    display: grid;
+    align-content: start;
+    gap: 1.5rem;
+  }
+  .panel__body > p:first-child {
+    max-width: 46ch;
+    font-size: 1.1875rem;
+  }
+  .panel__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem 1rem;
+  }
+  .panel__mail {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 0.75rem;
+    font-size: 1.0625rem;
+  }
+  .panel__mail span {
+    color: var(--ink-soft);
+  }
+  .panel__mail a {
+    font-weight: 700;
+    overflow-wrap: anywhere;
+  }
+
+  .foot {
+    padding-bottom: 2rem;
+  }
+  .foot__inner {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0.5rem 2rem;
+    padding-top: 1rem;
+    border-top: 3px solid var(--ink);
+    font-size: 0.9375rem;
+  }
+  .foot__name {
+    font-weight: 700;
+  }
+  .foot__note {
+    color: var(--ink-soft);
+  }
+
+  @media (min-width: 45rem) {
+    .help,
+    .parts {
+      order: 0;
+    }
+    .help {
+      margin-top: 0.5rem;
+    }
+    .parts-list li {
+      grid-template-areas: "letter glyph text qty";
+      grid-template-columns: 3rem 7.5rem 1fr auto;
+      gap: 1.5rem 2rem;
+      padding: 1.5rem 2rem;
+    }
+    .parts-list__glyph {
+      width: 100%;
+    }
+  }
+
+  @media (min-width: 56.25rem) {
+    .intro {
+      grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+      gap: 3.5rem;
+      align-items: start;
+    }
+    .intro__figure {
+      max-width: 46rem;
+    }
+    .section__head {
+      grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+      align-items: baseline;
+    }
+    .step {
+      grid-template-columns: 4.5rem minmax(0, 5fr) minmax(0, 7fr);
+      gap: 1.5rem 3.5rem;
+      align-items: start;
+    }
+    .step__figure {
+      grid-column: auto;
+      max-width: none;
+    }
+    .panel {
+      grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+      align-items: start;
+    }
+  }
+</style>

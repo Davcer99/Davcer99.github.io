@@ -1,0 +1,50 @@
+---
+// Inlines an illustration from src/assets/illustrations so GSAP can reach its inner elements.
+// A missing file renders a neutral frame of the same aspect ratio, so the layout never breaks.
+interface Props {
+  name: string;
+  caption: string;
+  ratio?: string;
+}
+
+const { name, caption, ratio = "4 / 3" } = Astro.props;
+
+const sources = import.meta.glob<string>("../assets/illustrations/*.svg", {
+  eager: true,
+  query: "?raw",
+  import: "default",
+});
+const raw = sources[`../assets/illustrations/${name}.svg`];
+const svg = raw?.replace(/^\s*<\?xml[^>]*\?>\s*/, "");
+---
+<figure class="figure" data-anim="figure" data-figure={name}>
+  <div class="drawing" aria-hidden="true" style={`--ratio: ${ratio}`} data-fallback={svg ? undefined : ""}>
+    {svg && <Fragment set:html={svg} />}
+  </div>
+  <figcaption>{caption}</figcaption>
+</figure>
+
+<style>
+  .figure {
+    margin: 0;
+  }
+  .drawing {
+    position: relative;
+  }
+  .drawing[data-fallback] {
+    aspect-ratio: var(--ratio);
+    border: 2px dashed var(--rule);
+  }
+  .drawing :global(svg) {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  figcaption {
+    margin-top: 0.75rem;
+    font-size: 0.875rem;
+    line-height: 1.45;
+    color: var(--ink-soft);
+    max-width: 60ch;
+  }
+</style>

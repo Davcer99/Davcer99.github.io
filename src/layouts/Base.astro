@@ -1,4 +1,7 @@
 ---
+import "@fontsource/atkinson-hyperlegible/latin-400.css";
+import "@fontsource/atkinson-hyperlegible/latin-700.css";
+import "../styles/global.css";
 import { localePath, locales, type Locale } from "../i18n/locales";
 
 interface Props {
@@ -14,6 +17,7 @@ const { locale, title, description } = Astro.props;
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light" />
     <title>{title}</title>
     <meta name="description" content={description} />
     {locales.map((l) => <link rel="alternate" hreflang={l} href={localePath[l]} />)}

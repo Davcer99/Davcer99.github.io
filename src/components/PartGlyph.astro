@@ -1,0 +1,84 @@
+---
+// Small authored isometric glyphs for the parts list, drawn with the manual's own line language.
+import type { PartLetter } from "../i18n/content";
+
+interface Props {
+  letter: PartLetter;
+}
+
+const { letter } = Astro.props;
+---
+<svg class="glyph" viewBox="0 0 120 90" width="120" height="90" aria-hidden="true" focusable="false">
+  {letter === "A" && (
+    <>
+      <path class="side" d="M20 56v10l40 20v-10z" />
+      <path class="side" d="M100 56v10L60 86V76z" />
+      <path class="top" d="M60 36l40 20-40 20-40-20z" />
+      <path class="side" d="M20 38v10l40 20v-10z" />
+      <path class="side" d="M100 38v10L60 68V58z" />
+      <path class="top" d="M60 18l40 20-40 20-40-20z" />
+    </>
+  )}
+  {letter === "B" && (
+    <>
+      <path class="side" d="M20 40v12l40 20V60z" />
+      <path class="side" d="M100 40v12L60 72V60z" />
+      <path class="top" d="M60 20l40 20-40 20-40-20z" />
+      <path class="socket" d="M60 31l20 10-20 10-20-10z" />
+    </>
+  )}
+  {letter === "C" && (
+    <>
+      <path class="ai ai-left" d="M30 30v30l30 15V45z" />
+      <path class="ai ai-right" d="M90 30v30L60 75V45z" />
+      <path class="ai" d="M60 15l30 15-30 15-30-15z" />
+    </>
+  )}
+  {letter === "D" && (
+    <>
+      <path class="cable" d="M22 66C44 24 80 90 98 30" />
+      <path class="side" d="M10 62v8l12 6v-8z" />
+      <path class="top" d="M22 56l12 6-12 6-12-6z" />
+      <path class="side" d="M86 26v8l12 6v-8z" />
+      <path class="top" d="M98 20l12 6-12 6-12-6z" />
+    </>
+  )}
+</svg>
+
+<style>
+  .glyph {
+    display: block;
+    width: 100%;
+    max-width: 120px;
+    height: auto;
+    overflow: visible;
+  }
+  .glyph :is(.top, .side, .ai, .socket, .cable) {
+    stroke: var(--ink);
+    stroke-width: 2.5;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+  }
+  .top {
+    fill: #fff;
+  }
+  .side {
+    fill: var(--side);
+  }
+  .socket {
+    fill: var(--ink);
+  }
+  .ai {
+    fill: var(--blue);
+  }
+  .ai-left {
+    fill: var(--blue-left);
+  }
+  .ai-right {
+    fill: var(--blue-right);
+  }
+  .cable {
+    fill: none;
+    stroke-width: 3;
+  }
+</style>
