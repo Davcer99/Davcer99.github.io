@@ -51,6 +51,11 @@ ${s} .mark{fill:none;stroke:#121314;stroke-width:var(--w);stroke-linecap:round;s
 ${s} .mark-f{fill:#f6f7f8;stroke:#121314;stroke-width:var(--w);stroke-linecap:round;stroke-linejoin:round}
 ${s} .blue-face{fill:var(--anatomy-paper);stroke:var(--anatomy-hi);stroke-width:var(--wf);stroke-linejoin:round}
 ${s} .strap{fill:#2a2c30;stroke:var(--anatomy-hi);stroke-width:var(--wf);stroke-linejoin:round}
+${s} .el-face{fill:var(--anatomy-shade-3);stroke:var(--anatomy-hi);stroke-width:var(--wf);stroke-linejoin:round}
+${s} .el-mid{fill:var(--anatomy-shade-1);stroke:var(--anatomy-hi);stroke-width:var(--wf);stroke-linejoin:round}
+${s} .glyph{fill:none;stroke:var(--anatomy-hi);stroke-width:var(--wf);stroke-linejoin:round;stroke-linecap:round}
+${s} .tapeslab>.iso-fill,${s} .tapeslab>.iso-top{fill:#c9ccd1}
+${s} .tapeslab>.iso-shade{fill:#b3b7be}
 ${s} .tape{fill:#c9ccd1;stroke:#121314;stroke-width:var(--wf);stroke-linejoin:round}
 `.trim();
 }
