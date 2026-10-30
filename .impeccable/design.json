@@ -1,0 +1,229 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-29T23:45:00Z",
+  "title": "Design System: David Balaguer Cervera, personal landing",
+  "extensions": {
+    "colorMeta": {
+      "paper": {
+        "role": "neutral",
+        "displayName": "Cool Paper",
+        "canonical": "#f6f7f8",
+        "tonalRamp": ["#d3d6dc", "#dbdee3", "#e0e3e7", "#e4e6ea", "#f6f7f8", "#ffffff"]
+      },
+      "white": {
+        "role": "neutral",
+        "displayName": "Sheet White",
+        "canonical": "#ffffff",
+        "tonalRamp": ["#d3d6dc", "#dbdee3", "#e0e3e7", "#e4e6ea", "#f6f7f8", "#ffffff"]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Technical Ink",
+        "canonical": "#121314",
+        "tonalRamp": ["#121314", "#1a1b1e", "#2b2d31", "#3d4046", "#5b6068", "#9ca1a9", "#c9ccd1", "#e4e6ea"]
+      },
+      "ink-soft": {
+        "role": "neutral",
+        "displayName": "Pencil Grey",
+        "canonical": "#4a4d52",
+        "tonalRamp": ["#121314", "#1a1b1e", "#2b2d31", "#3d4046", "#5b6068", "#9ca1a9", "#c9ccd1", "#e4e6ea"]
+      },
+      "side": {
+        "role": "neutral",
+        "displayName": "Side Face Grey",
+        "canonical": "#e4e6ea",
+        "tonalRamp": ["#d3d6dc", "#dbdee3", "#e0e3e7", "#e4e6ea", "#f6f7f8", "#ffffff"]
+      },
+      "rule": {
+        "role": "neutral",
+        "displayName": "Hairline Grey",
+        "canonical": "#c9ccd1",
+        "tonalRamp": ["#121314", "#1a1b1e", "#2b2d31", "#3d4046", "#5b6068", "#9ca1a9", "#c9ccd1", "#e4e6ea"]
+      },
+      "blue": {
+        "role": "primary",
+        "displayName": "Process Blue",
+        "canonical": "#2d5bff",
+        "tonalRamp": ["#1b3aa8", "#2146c4", "#264ed9", "#2a56f0", "#2d5bff", "#5f84ff", "#8fa8ff", "#c3d0ff"]
+      },
+      "blue-deep": {
+        "role": "primary",
+        "displayName": "Process Blue, pressed",
+        "canonical": "#1b3fd1",
+        "tonalRamp": ["#1b3aa8", "#2146c4", "#264ed9", "#2a56f0", "#2d5bff", "#5f84ff", "#8fa8ff", "#c3d0ff"]
+      },
+      "blue-left": {
+        "role": "primary",
+        "displayName": "Module Blue, left face",
+        "canonical": "#577cff",
+        "tonalRamp": ["#1b3aa8", "#2146c4", "#264ed9", "#2a56f0", "#2d5bff", "#5f84ff", "#8fa8ff", "#c3d0ff"]
+      },
+      "blue-right": {
+        "role": "primary",
+        "displayName": "Module Blue, right face",
+        "canonical": "#7694ff",
+        "tonalRamp": ["#1b3aa8", "#2146c4", "#264ed9", "#2a56f0", "#2d5bff", "#5f84ff", "#8fa8ff", "#c3d0ff"]
+      }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "The H1 with the owner's name, once per page." },
+      "display-panel": { "displayName": "Display, panel", "purpose": "The single oversized word of the help panel." },
+      "headline": { "displayName": "Headline", "purpose": "Section H2s." },
+      "title-lg": { "displayName": "Title, large", "purpose": "The hero role line (max 24ch)." },
+      "title": { "displayName": "Title", "purpose": "Process step names." },
+      "title-sm": { "displayName": "Title, small", "purpose": "Capability part names." },
+      "lede": { "displayName": "Lede", "purpose": "The hero paragraph (max 52ch)." },
+      "body": { "displayName": "Body", "purpose": "Paragraphs and table rows; tabular numerals." },
+      "button": { "displayName": "Button", "purpose": "Pill button labels." },
+      "nav": { "displayName": "Nav", "purpose": "In-page navigation and the language switch (switch is 700)." },
+      "model-line": { "displayName": "Model line", "purpose": "Uppercase tracked title-block line in the header bar. Not an eyebrow." },
+      "label": { "displayName": "Label", "purpose": "Uppercase tracked header cell of the parts table. Not an eyebrow." },
+      "caption": { "displayName": "Caption", "purpose": "Figure captions, Pencil Grey." },
+      "callout": { "displayName": "Callout", "purpose": "Part names beside circled letters in the hero drawing; smallest size in the system." }
+    },
+    "shadows": [],
+    "motion": [
+      { "name": "duration-settle", "value": "0.45s", "purpose": "A part arriving in its drawing." },
+      { "name": "duration-draw", "value": "0.4s", "purpose": "The dashed arrow flowing toward the socket." },
+      { "name": "duration-seat", "value": "0.55s", "purpose": "The AI module arriving or seating." },
+      { "name": "duration-pulse", "value": "0.16s", "purpose": "Half of the figure-mark pulse (yoyo, one repeat)." },
+      { "name": "stagger", "value": "0.08s", "purpose": "Delay between parts in a step drawing." },
+      { "name": "distance-settle", "value": "0.02 x viewBox width", "purpose": "Parts rise into place from slightly below." },
+      { "name": "distance-drop", "value": "0.06 x viewBox width", "purpose": "In a step drawing the AI module arrives from above." },
+      { "name": "distance-flow", "value": "0.04 x viewBox width", "purpose": "Dash pattern slide along the arrow." },
+      { "name": "ease-arrive", "value": "expo.out", "purpose": "Confident deceleration, no overshoot." },
+      { "name": "ease-seat", "value": "power3.out", "purpose": "Small, firm landing of the AI module." },
+      { "name": "ease-pulse", "value": "power2.out", "purpose": "The figure-mark pulse." },
+      { "name": "ease-fade", "value": "power1.in", "purpose": "The arrow disappears late, under the module." },
+      { "name": "scroll-start", "value": "top 85%", "purpose": "A step drawing plays once when its top reaches 85% of the viewport." },
+      { "name": "pulse-scale", "value": "1.12", "purpose": "Figure-mark scale at the peak of its pulse." },
+      { "name": "css-ease-out", "value": "cubic-bezier(0.16, 1, 0.3, 1)", "purpose": "CSS custom property --ease-out; used by button transitions." },
+      { "name": "css-button-transition", "value": "160ms on background-color, border-color, color", "purpose": "Button hover; :active adds a 1px translateY." },
+      { "name": "reduced-motion", "value": "no tween registered; CSS transitions 0.01ms", "purpose": "prefers-reduced-motion: reduce leaves the authored drawings; beforeprint also reverts all tweens." }
+    ],
+    "breakpoints": [
+      { "name": "parts-table-single-column", "value": "max-width: 29.99rem" },
+      { "name": "hero-callouts-hidden", "value": "max-width: 35.99rem" },
+      { "name": "capability-row-inline", "value": "min-width: 45rem" },
+      { "name": "two-column-5-7", "value": "min-width: 56.25rem" },
+      { "name": "page-max", "value": "90rem" }
+    ],
+    "lineWeights": [
+      { "name": "rule-heavy", "value": "3px ink", "purpose": "Header rule, footer rule, help panel border, circled numbers and letters." },
+      { "name": "rule", "value": "2px ink", "purpose": "Section rules, parts table, parts list, button borders, link underline thickness." },
+      { "name": "hairline", "value": "1px #c9ccd1", "purpose": "Dividers inside tables, lists and step rows." },
+      { "name": "drawing-hero", "value": "2.5px main, 1.5px fine, 1.4px dashed", "purpose": "hero-assembly.svg and the part glyphs (cable glyph 3px)." },
+      { "name": "drawing-step", "value": "2px main, 1.2px fine, 1.2px dashed", "purpose": "step-1.svg to step-5.svg." },
+      { "name": "focus", "value": "3px ink outline, 3px offset", "purpose": "Every :focus-visible." }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The mailto action; the only blue-filled control.",
+      "html": "<a class=\"ds-btn\" href=\"#\">Write me</a>",
+      "css": ".ds-btn { display: inline-flex; align-items: center; justify-content: center; min-height: 3.375rem; padding: 0 1.75rem; border: 2px solid var(--blue, #2d5bff); border-radius: 999px; background: var(--blue, #2d5bff); color: #fff; font-family: var(--font, 'Atkinson Hyperlegible', system-ui, sans-serif); font-size: 1.125rem; font-weight: 700; line-height: 1; text-decoration: none; transition: background-color 160ms var(--ease-out, cubic-bezier(0.16, 1, 0.3, 1)), border-color 160ms var(--ease-out, cubic-bezier(0.16, 1, 0.3, 1)); } .ds-btn:hover { background: var(--blue-deep, #1b3fd1); border-color: var(--blue-deep, #1b3fd1); } .ds-btn:focus-visible { outline: 3px solid var(--ink, #121314); outline-offset: 3px; } .ds-btn:active { transform: translateY(1px); }"
+    },
+    {
+      "name": "Ghost Button",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "The secondary action (LinkedIn); inverts to ink on hover.",
+      "html": "<a class=\"ds-btn-ghost\" href=\"#\">LinkedIn</a>",
+      "css": ".ds-btn-ghost { display: inline-flex; align-items: center; justify-content: center; min-height: 3.375rem; padding: 0 1.75rem; border: 2px solid var(--ink, #121314); border-radius: 999px; background: transparent; color: var(--ink, #121314); font-family: var(--font, 'Atkinson Hyperlegible', system-ui, sans-serif); font-size: 1.125rem; font-weight: 700; line-height: 1; text-decoration: none; transition: background-color 160ms var(--ease-out, cubic-bezier(0.16, 1, 0.3, 1)), color 160ms var(--ease-out, cubic-bezier(0.16, 1, 0.3, 1)); } .ds-btn-ghost:hover { background: var(--ink, #121314); color: var(--paper, #f6f7f8); } .ds-btn-ghost:focus-visible { outline: 3px solid var(--ink, #121314); outline-offset: 3px; } .ds-btn-ghost:active { transform: translateY(1px); }"
+    },
+    {
+      "name": "Header Bar",
+      "kind": "nav",
+      "refersTo": "header-bar",
+      "description": "Title-block model line, in-page nav and language switch on a 3px ink rule.",
+      "html": "<header class=\"ds-bar\"><p class=\"ds-model\">Model DBC · Full-stack + AI</p><nav class=\"ds-nav\"><a href=\"#\">Capabilities</a><a href=\"#\">Process</a><a href=\"#\">Contact</a><a class=\"ds-switch\" href=\"#\">Español</a></nav></header>",
+      "css": ".ds-bar { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 0.25rem 2rem; padding-bottom: 0.5rem; border-bottom: 3px solid var(--ink, #121314); font-family: var(--font, 'Atkinson Hyperlegible', system-ui, sans-serif); color: var(--ink, #121314); } .ds-model { margin: 0; font-size: 0.875rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; } .ds-nav { display: flex; flex-wrap: wrap; gap: 0 1.5rem; font-size: 0.9375rem; } .ds-nav a { padding-block: 0.5rem; color: inherit; text-decoration: none; } .ds-nav a:hover { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 0.2em; } .ds-nav a:focus-visible { outline: 3px solid var(--ink, #121314); outline-offset: 3px; } .ds-switch { font-weight: 700; }"
+    },
+    {
+      "name": "Circled Number",
+      "kind": "custom",
+      "refersTo": "circle-number",
+      "description": "Step number: paper circle with a 3px ink ring. The AI step swaps to the blue fill.",
+      "html": "<span class=\"ds-circle\">1</span> <span class=\"ds-circle ds-circle-ai\">3</span>",
+      "css": ".ds-circle { display: inline-grid; place-items: center; width: 3.5rem; height: 3.5rem; border: 3px solid var(--ink, #121314); border-radius: 50%; background: var(--paper, #f6f7f8); color: var(--ink, #121314); font-family: var(--font, 'Atkinson Hyperlegible', system-ui, sans-serif); font-size: 1.75rem; font-weight: 700; line-height: 1; } .ds-circle-ai { background: var(--blue, #2d5bff); color: #fff; }"
+    },
+    {
+      "name": "Parts Table",
+      "kind": "custom",
+      "refersTo": "parts-table-row",
+      "description": "Bordered 'pieces included' list with 1x quantities; two columns, hairline dividers.",
+      "html": "<div class=\"ds-parts\"><p class=\"ds-parts-title\">Pieces included</p><ul class=\"ds-parts-grid\"><li><b>1×</b><b>A</b><span>Backend</span></li><li><b>1×</b><b>B</b><span>Frontend</span></li><li><b>1×</b><b>C</b><span>AI integration</span></li><li><b>1×</b><b>D</b><span>Automation</span></li></ul></div>",
+      "css": ".ds-parts { max-width: 33rem; border: 2px solid var(--ink, #121314); font-family: var(--font, 'Atkinson Hyperlegible', system-ui, sans-serif); color: var(--ink, #121314); } .ds-parts-title { margin: 0; padding: 0.625rem 0.875rem; border-bottom: 2px solid var(--ink, #121314); font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; } .ds-parts-grid { display: grid; grid-template-columns: 1fr 1fr; margin: 0; padding: 0; list-style: none; } .ds-parts-grid li { display: flex; align-items: baseline; gap: 0.5rem; padding: 0.625rem 0.875rem; border-top: 1px solid var(--rule, #c9ccd1); font-size: 1rem; } .ds-parts-grid li:nth-child(-n + 2) { border-top: 0; } .ds-parts-grid li:nth-child(odd) { border-right: 1px solid var(--rule, #c9ccd1); } .ds-parts-grid b:first-child { min-width: 1.75rem; }"
+    },
+    {
+      "name": "Capability Row",
+      "kind": "card",
+      "refersTo": "parts-list-row",
+      "description": "Row of the bordered capability list: circled letter, isometric glyph, name and summary, 1x. Glyph C is the only blue one.",
+      "html": "<div class=\"ds-row\"><span class=\"ds-circle-letter\">C</span><svg class=\"ds-glyph\" viewBox=\"0 0 120 90\" width=\"120\" height=\"90\" aria-hidden=\"true\"><path d=\"M30 30v30l30 15V45z\" fill=\"#577cff\"/><path d=\"M90 30v30L60 75V45z\" fill=\"#7694ff\"/><path d=\"M60 15l30 15-30 15-30-15z\" fill=\"#2d5bff\"/></svg><div><h3>AI integration</h3><p>Language models built into real product flows, with their limits and controls.</p></div><span class=\"ds-qty\">1×</span></div>",
+      "css": ".ds-row { display: grid; grid-template-columns: 3rem 7.5rem 1fr auto; align-items: center; gap: 1.5rem 2rem; padding: 1.5rem 2rem; border: 2px solid var(--ink, #121314); background: var(--paper, #f6f7f8); color: var(--ink, #121314); font-family: var(--font, 'Atkinson Hyperlegible', system-ui, sans-serif); } .ds-circle-letter { display: inline-grid; place-items: center; width: 3rem; height: 3rem; border: 3px solid var(--ink, #121314); border-radius: 50%; font-size: 1.5rem; font-weight: 700; line-height: 1; } .ds-glyph { display: block; width: 100%; height: auto; overflow: visible; stroke: var(--ink, #121314); stroke-width: 2.5; stroke-linejoin: round; stroke-linecap: round; } .ds-row h3 { margin: 0; font-size: 1.5rem; line-height: 1.15; } .ds-row p { max-width: 55ch; margin: 0.375rem 0 0; font-size: 1.0625rem; line-height: 1.55; } .ds-qty { font-size: 1.25rem; font-weight: 700; }"
+    },
+    {
+      "name": "Figure with Caption and Callout",
+      "kind": "custom",
+      "refersTo": "figure-caption",
+      "description": "Drawing slot with a numbered Pencil Grey caption and a callout word beside a circled letter. A dashed frame stands in for a missing drawing.",
+      "html": "<figure class=\"ds-figure\"><div class=\"ds-drawing\"><span class=\"ds-callout\">AI integration</span></div><figcaption>Fig. 3 · The AI module slots into its socket; no spare parts.</figcaption></figure>",
+      "css": ".ds-figure { margin: 0; font-family: var(--font, 'Atkinson Hyperlegible', system-ui, sans-serif); } .ds-drawing { position: relative; aspect-ratio: 637.3 / 548.8; border: 2px dashed var(--rule, #c9ccd1); } .ds-callout { position: absolute; top: 12%; left: 52%; padding: 0.125rem 0.25rem; background: var(--paper, #f6f7f8); color: var(--ink, #121314); font-size: 0.8125rem; font-weight: 700; line-height: 1.2; white-space: nowrap; } .ds-figure figcaption { max-width: 60ch; margin-top: 0.75rem; color: var(--ink-soft, #4a4d52); font-size: 0.875rem; line-height: 1.45; }"
+    },
+    {
+      "name": "Help Panel",
+      "kind": "card",
+      "refersTo": "help-panel",
+      "description": "The closing 'Questions?' block: 3px ink border, one oversized word, body, both buttons, plain email link.",
+      "html": "<section class=\"ds-panel\"><h2>Questions?</h2><div class=\"ds-panel-body\"><p>Write me and I will reply with my availability and what you need.</p><div class=\"ds-panel-actions\"><a class=\"ds-btn\" href=\"#\">Write me</a><a class=\"ds-btn-ghost\" href=\"#\">LinkedIn</a></div><p class=\"ds-mail\"><span>Email</span> <a href=\"#\">name@example.com</a></p></div></section>",
+      "css": ".ds-panel { display: grid; gap: 1.5rem 3rem; padding: clamp(1.5rem, 4vw, 3.5rem); border: 3px solid var(--ink, #121314); background: var(--paper, #f6f7f8); color: var(--ink, #121314); font-family: var(--font, 'Atkinson Hyperlegible', system-ui, sans-serif); } .ds-panel h2 { margin: 0; font-size: clamp(2.75rem, 8vw, 6rem); font-weight: 700; line-height: 1; letter-spacing: -0.02em; } .ds-panel-body { display: grid; align-content: start; gap: 1.5rem; } .ds-panel-body p { margin: 0; max-width: 46ch; font-size: 1.1875rem; line-height: 1.55; } .ds-panel-actions { display: flex; flex-wrap: wrap; gap: 0.75rem 1rem; } .ds-panel .ds-btn, .ds-panel .ds-btn-ghost { display: inline-flex; align-items: center; justify-content: center; min-height: 3.375rem; padding: 0 1.75rem; border: 2px solid var(--ink, #121314); border-radius: 999px; font-size: 1.125rem; font-weight: 700; line-height: 1; text-decoration: none; } .ds-panel .ds-btn { background: var(--blue, #2d5bff); border-color: var(--blue, #2d5bff); color: #fff; } .ds-panel .ds-btn-ghost { background: transparent; color: var(--ink, #121314); } .ds-mail { display: flex; flex-wrap: wrap; gap: 0.25rem 0.75rem; font-size: 1.0625rem; } .ds-mail span { color: var(--ink-soft, #4a4d52); } .ds-mail a { font-weight: 700; text-underline-offset: 0.2em; text-decoration-thickness: 2px; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Assembly Manual",
+    "overview": "The page is a flat-pack instruction sheet for one person's profile. Cool white paper, black line art, and a single process blue. A header bar with a heavy rule, a bordered parts list with 1× quantities, circled numbers for steps, circled letters (A Backend, B Frontend, C AI integration, D Automation) that tie every drawing to its text, and isometric figures with captions. It reads as a document first and a website second, which is the point: calm, exact, a little dry, with a visible sense of \"everything has a place\".\n\nDensity is moderate and structured. Text sits in narrow measures beside large drawings, and sections are separated by ruled lines instead of boxes or background changes. Personality comes from the drawings and from the manual's vocabulary, not from decoration. The build is light only (color-scheme: light); there is no dark theme and no accent beyond one blue.\n\nPRODUCT.md commits the visual system to three durable constraints: it must not read as a dark/neon developer-portfolio template, as over-animated, or as AI hype (no glow, no magic gradients). The manual vocabulary answers all three by construction.",
+    "keyCharacteristics": [
+      "Paper, ink, one blue. Blue is a signal, never a theme.",
+      "Every structure is drawn with an ink line (1px / 2px / 3px), never with a shadow or a fill block.",
+      "Square corners everywhere except pills (buttons) and circles (numbers and letters).",
+      "One family, Atkinson Hyperlegible, two weights (400, 700); hierarchy comes from size and weight.",
+      "Illustrations are authored isometric SVGs inlined in the page, animated by a small, quiet GSAP clock.",
+      "Motion is progressive enhancement: the authored figure is always the no-JS and reduced-motion state."
+    ],
+    "rules": [
+      { "name": "The One Blue Rule", "body": "Blue appears on exactly three things: part C (the AI module) in drawings and glyphs, the primary action, and the circle of the process step that integrates AI. Nothing else is blue: not links, not headings, not rules, not hover states of ghost elements.", "section": "colors" },
+      { "name": "The Ink-on-Paper Rule", "body": "Neutrals do the work. If a new element needs emphasis, give it a heavier ink line or weight 700, not a tint.", "section": "colors" },
+      { "name": "The Two-Weight Rule", "body": "400 reads, 700 labels and titles. A new level gets a size, not a new weight or family.", "section": "typography" },
+      { "name": "The Tracked-Label Rule", "body": "Uppercase letter-spacing exists only in two places the manual itself would put it: the title-block line in the header bar and the header cell of the parts table. It is not an eyebrow style and is never placed above a heading.", "section": "typography" },
+      { "name": "The No-Lift Rule", "body": "Nothing floats. A new surface is a ruled box on the paper, never a card with a shadow, a blurred panel or a gradient fill.", "section": "elevation" },
+      { "name": "The Circle Means Reference Rule", "body": "A circle is a pointer, not decoration: numbers for steps, letters for parts. A step number is paper with an ink ring; the AI step alone is blue-filled with white text. Part letters are identical in ES and EN and match between hero, parts list and glyphs.", "section": "shapes" },
+      { "name": "The One Pill Family Rule", "body": "Pills are buttons and only buttons. Cards, tables, panels and labels stay square.", "section": "shapes" },
+      { "name": "The Content-First Rule", "body": "Motion is enhancement over a complete static page. Nothing is hidden by CSS. Without JavaScript or under prefers-reduced-motion: reduce, no tween is registered (gsap.matchMedia) and the drawings stay exactly as authored (the exploded figure: C beside its socket, arrow visible). CSS transitions collapse to 0.01ms. Before printing, every tween is reverted so unscrolled step parts are visible.", "section": "components" },
+      { "name": "The Once Rule", "body": "Each animation plays once on load or first scroll. No loops, no scroll-linked scrubbing, no parallax, no hover choreography.", "section": "components" }
+    ],
+    "dos": [
+      "Do keep the page paper-white (#f6f7f8) with ink (#121314) as the only text and line color; use Pencil Grey (#4a4d52) for captions and secondary notes.",
+      "Do reserve Process Blue (#2d5bff) for part C, the primary action and the AI step circle.",
+      "Do draw structure with ink lines: 3px for rules that frame the page, 2px for boxes, 1px Hairline Grey for dividers.",
+      "Do tie every drawing to text with a circled number or letter, and keep part letters identical in both locales.",
+      "Do show quantities as 1× in tables and lists.",
+      "Do keep content equivalent in ES and EN, including new sections, captions and labels.",
+      "Do give every new motion a duration, distance and ease from the clock in motion.ts, make it play once, and make sure the no-JS and reduced-motion state is a complete page.",
+      "Do keep a visible 3px ink focus ring on every interactive element."
+    ],
+    "donts": [
+      "Don't add shadows, gradients, glows, blurs or translucency.",
+      "Don't round cards, panels, tables or images. Rounded means a button pill or a reference circle, nothing else.",
+      "Don't use blue for links, headings, decoration, dividers or hover states of ghost elements.",
+      "Don't add a second typeface, a third weight, or type below 0.8125rem.",
+      "Don't add icons from a glyph font or icon library; if a pictogram is needed, draw it in the manual's isometric language.",
+      "Don't add a dark theme, neon or terminal styling.",
+      "Don't loop, scrub or parallax anything; don't hide content in CSS waiting for a script.",
+      "Don't invent evidence in drawings or captions (clients, metrics, named projects). Illustrations stay labeled as illustrative."
+    ]
+  }
+}
