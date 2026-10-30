@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Category standard sketch</title>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; }
+  html, body { width: 1440px; height: 900px; overflow: hidden; }
+  body { background: #fff; color: #111827; font-family: "Geist", system-ui, sans-serif; }
+  header { height: 76px; padding: 0 120px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #e5e7eb; }
+  header strong { font-size: 17px; }
+  header nav { display: flex; gap: 32px; font-size: 15px; color: #4b5563; }
+  main { padding: 120px 120px 0; display: grid; grid-template-columns: 1.3fr 1fr; gap: 80px; align-items: center; }
+  .eyebrow { font-size: 15px; color: #2563eb; font-weight: 500; }
+  h1 { margin-top: 16px; font-size: 64px; line-height: 1.05; letter-spacing: -.02em; }
+  p.lede { margin-top: 24px; font-size: 20px; line-height: 1.55; color: #4b5563; max-width: 560px; }
+  .ctas { margin-top: 36px; display: flex; gap: 14px; }
+  .btn { height: 50px; padding: 0 24px; display: inline-flex; align-items: center; border-radius: 10px; font-weight: 500; text-decoration: none; }
+  .primary { background: #2563eb; color: #fff; }
+  .secondary { border: 1px solid #d1d5db; color: #111827; }
+  .avatar { width: 380px; height: 380px; border-radius: 50%; background: #f3f4f6; justify-self: end; display: grid; place-items: center; color: #9ca3af; font-size: 15px; }
+  .stack { position: absolute; left: 120px; right: 120px; bottom: 56px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+  .card { background: #f3f4f6; border-radius: 12px; padding: 20px; }
+  .card b { display: block; font-size: 16px; }
+  .card span { font-size: 14px; color: #6b7280; }
+</style>
+</head>
+<body>
+  <header><strong>David Balaguer Cervera</strong><nav><a>Sobre mí</a><a>Stack</a><a>Contacto</a><a>ES · EN</a></nav></header>
+  <main>
+    <div>
+      <p class="eyebrow">Full Stack Developer · IA</p>
+      <h1>Hola, soy David. Construyo producto con IA dentro.</h1>
+      <p class="lede">Desarrollador full-stack especializado en integrar IA y automatización en aplicaciones reales. Trabajo en remoto.</p>
+      <div class="ctas"><a class="btn primary" href="mailto:davidbalaguercervera@gmail.com">Contactar</a><a class="btn secondary" href="https://www.linkedin.com/in/david-balaguer-cervera/">LinkedIn</a></div>
+    </div>
+    <div class="avatar">Foto</div>
+  </main>
+  <section class="stack">
+    <div class="card"><b>Frontend</b><span>Interfaces web</span></div>
+    <div class="card"><b>Backend</b><span>APIs y servicios</span></div>
+    <div class="card"><b>IA</b><span>Integración de modelos</span></div>
+    <div class="card"><b>Automatización</b><span>Procesos y flujos</span></div>
+  </section>
+</body>
+</html>

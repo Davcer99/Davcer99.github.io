@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Shadow board sketch</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Big+Shoulders+Stencil+Display:wght@700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --board: #8ea596; --board-deep: #7b9384; --hole: #56695d;
+    --paint: #f2c230; --ink: #111614; --red: #d7261e; --steel: #c9cfcc;
+    --pitch: 24px;
+  }
+  * { box-sizing: border-box; margin: 0; }
+  html, body { width: 1440px; height: 900px; overflow: hidden; }
+  body {
+    font-family: "Archivo", sans-serif; color: var(--ink);
+    background-color: var(--board);
+    background-image: radial-gradient(circle at 12px 12px, var(--hole) 0 3px, transparent 3.5px);
+    background-size: var(--pitch) var(--pitch);
+  }
+  .tape {
+    display: inline-flex; align-items: center; height: 34px; padding: 0 14px;
+    background: var(--ink); color: #f4f5f2; border-radius: 3px;
+    font-stretch: 125%; font-weight: 800; font-size: 15px; letter-spacing: .14em; text-transform: uppercase;
+    text-shadow: 0 1px 0 rgba(0,0,0,.6), 0 -1px 0 rgba(255,255,255,.25);
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,.06), 0 2px 0 rgba(0,0,0,.25);
+    text-decoration: none;
+  }
+  .tape.red { background: var(--red); }
+  .tape.small { height: 26px; font-size: 12px; padding: 0 10px; }
+  header {
+    position: absolute; left: 48px; right: 48px; top: 48px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  header nav { display: flex; gap: 12px; }
+  .lang { opacity: .85; }
+  .copy { position: absolute; left: 48px; top: 168px; width: 560px; }
+  .stamp {
+    font-family: "Big Shoulders Stencil Display", sans-serif; font-weight: 900;
+    font-size: 104px; line-height: .9; text-transform: uppercase; letter-spacing: .01em;
+  }
+  .stamp em { font-style: normal; color: var(--paint); -webkit-text-stroke: 2px var(--ink); }
+  .lede { margin-top: 28px; font-size: 21px; line-height: 1.45; max-width: 470px; font-stretch: 100%; }
+  .actions { margin-top: 40px; display: flex; gap: 14px; align-items: center; }
+  .actions .tape { height: 52px; font-size: 18px; padding: 0 22px; }
+  .avail { margin-top: 26px; font-size: 14px; font-stretch: 112%; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+  .avail b { display: inline-block; width: 10px; height: 10px; background: #2fbf4a; border-radius: 50%; margin-right: 8px; }
+  .board { position: absolute; left: 672px; top: 144px; width: 720px; height: 696px; }
+  .slot { position: absolute; }
+  .slot svg { display: block; }
+  .slot .label { position: absolute; left: 0; white-space: nowrap; }
+  .peg { fill: var(--steel); stroke: var(--ink); stroke-width: 2; }
+  .shadow { fill: var(--paint); }
+  .tool { fill: var(--steel); stroke: var(--ink); stroke-width: 3; }
+  .grip { fill: var(--ink); }
+  .note {
+    position: absolute; left: 0; bottom: 0; font-size: 13px; font-weight: 600; letter-spacing: .06em;
+    text-transform: uppercase; opacity: .7;
+  }
+</style>
+</head>
+<body>
+  <header>
+    <span class="tape">David Balaguer Cervera</span>
+    <nav>
+      <a class="tape small" href="#">Qué hago</a>
+      <a class="tape small" href="#">Cómo trabajo</a>
+      <a class="tape small lang" href="#">ES · EN</a>
+    </nav>
+  </header>
+
+  <section class="copy">
+    <h1 class="stamp">Full-stack<br>que integra<br><em>IA</em> en<br>producto</h1>
+    <p class="lede">Construyo sistemas completos, de la interfaz a la base de datos, y les integro IA y automatización como piezas que funcionan cada día, no como demos.</p>
+    <div class="actions">
+      <a class="tape red" href="mailto:davidbalaguercervera@gmail.com">Escríbeme →</a>
+      <a class="tape" href="https://www.linkedin.com/in/david-balaguer-cervera/">LinkedIn</a>
+    </div>
+    <p class="avail"><b></b>Disponible · 100 % remoto</p>
+  </section>
+
+  <div class="board" aria-hidden="true">
+    <!-- 01 frontend: square / ruler -->
+    <div class="slot" style="left:24px; top:24px">
+      <svg width="168" height="312" viewBox="0 0 168 312">
+        <circle class="peg" cx="84" cy="12" r="8"/>
+        <path class="tool" d="M60 30h48v230H60z"/>
+        <path class="grip" d="M60 60h20M60 90h14M60 120h20M60 150h14M60 180h20M60 210h14M60 240h20" stroke="#111614" stroke-width="3"/>
+      </svg>
+      <span class="tape small label" style="top:288px">01 Frontend</span>
+    </div>
+    <!-- 02 backend: wrench -->
+    <div class="slot" style="left:216px; top:24px">
+      <svg width="168" height="312" viewBox="0 0 168 312">
+        <circle class="peg" cx="84" cy="12" r="8"/>
+        <path class="tool" d="M66 70a34 34 0 1 1 36 0v190a18 18 0 0 1-36 0z"/>
+        <path d="M74 20h20v34H74z" fill="#8ea596" stroke="#111614" stroke-width="3"/>
+      </svg>
+      <span class="tape small label" style="top:288px">02 Backend</span>
+    </div>
+    <!-- 03 IA: missing tool, only the painted shadow remains -->
+    <div class="slot" style="left:408px; top:24px">
+      <svg width="168" height="312" viewBox="0 0 168 312">
+        <circle class="peg" cx="84" cy="12" r="8"/>
+        <path class="shadow" d="M84 26c26 0 44 22 44 52 0 24-14 40-28 48v134c0 12-8 20-16 20s-16-8-16-20V126c-14-8-28-24-28-48 0-30 18-52 44-52z"/>
+      </svg>
+      <span class="tape small label red" style="top:288px">03 IA · en uso</span>
+    </div>
+    <!-- 04 automatizacion: gear key -->
+    <div class="slot" style="left:24px; top:360px">
+      <svg width="360" height="216" viewBox="0 0 360 216">
+        <circle class="peg" cx="60" cy="12" r="8"/><circle class="peg" cx="300" cy="12" r="8"/>
+        <path class="tool" d="M40 40h280v40H40z"/>
+        <circle class="tool" cx="80" cy="140" r="52"/><circle cx="80" cy="140" r="18" fill="#8ea596" stroke="#111614" stroke-width="3"/>
+        <circle class="tool" cx="210" cy="150" r="36"/><circle cx="210" cy="150" r="12" fill="#8ea596" stroke="#111614" stroke-width="3"/>
+      </svg>
+      <span class="tape small label" style="top:192px">04 Automatización</span>
+    </div>
+    <!-- 05 integraciones: clamp -->
+    <div class="slot" style="left:408px; top:360px">
+      <svg width="288" height="216" viewBox="0 0 288 216">
+        <circle class="peg" cx="144" cy="12" r="8"/>
+        <path class="tool" d="M40 30h208v34H220v100h28v34H40v-34h28V64H40z"/>
+        <path class="grip" d="M120 64h48v100h-48z"/>
+      </svg>
+      <span class="tape small label" style="top:192px">05 Integraciones</span>
+    </div>
+    <p class="note">Tablero de trabajo · la pieza 03 está fuera: en uso en producción</p>
+  </div>
+</body>
+</html>

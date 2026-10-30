@@ -1,0 +1,56 @@
+---
+import Base from "../layouts/Base.astro";
+import { content, type CapabilityId } from "../i18n/content";
+import { localePath, type Locale } from "../i18n/locales";
+import { profile } from "../data/profile";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = content[locale];
+const other: Locale = locale === "es" ? "en" : "es";
+const mailto = `mailto:${profile.email}`;
+const capabilityOrder: CapabilityId[] = ["frontend", "backend", "ai", "automation", "integrations"];
+---
+<Base locale={locale} title={t.meta.title} description={t.meta.description}>
+  <header>
+    <span>{profile.name}</span>
+    <nav>
+      <a href="#capabilities">{t.nav.capabilities}</a>
+      <a href="#process">{t.nav.process}</a>
+      <a href={localePath[other]} hreflang={other} lang={other}>{t.nav.switchTo}</a>
+    </nav>
+  </header>
+  <main>
+    <section id="intro">
+      <h1>{t.hero.headline}</h1>
+      <p>{t.hero.lede}</p>
+      <a href={mailto}>{t.hero.primaryCta}</a>
+      <a href={profile.linkedin} rel="me noopener">{t.hero.secondaryCta}</a>
+      <p>{t.hero.availability}</p>
+    </section>
+    <section id="capabilities">
+      <h2>{t.capabilities.heading}</h2>
+      <p>{t.capabilities.intro}</p>
+      <ol>
+        {capabilityOrder.map((id) => (
+          <li><h3>{t.capabilities.items[id].name}</h3><p>{t.capabilities.items[id].summary}</p></li>
+        ))}
+      </ol>
+    </section>
+    <section id="process">
+      <h2>{t.process.heading}</h2>
+      <ol>
+        {t.process.steps.map((step) => <li><h3>{step.name}</h3><p>{step.detail}</p></li>)}
+      </ol>
+    </section>
+    <section id="contact">
+      <h2>{t.contact.heading}</h2>
+      <p>{t.contact.body}</p>
+      <a href={mailto}>{t.contact.cta}</a>
+      <a href={profile.linkedin} rel="me noopener">{t.contact.secondaryCta}</a>
+    </section>
+  </main>
+</Base>

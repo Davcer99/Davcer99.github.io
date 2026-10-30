@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Assembly manual sketch</title>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root { --paper: #f6f7f8; --ink: #121314; --blue: #2d5bff; --rule: #c9ccd1; }
+  * { box-sizing: border-box; margin: 0; }
+  html, body { width: 1440px; height: 900px; overflow: hidden; }
+  body { background: var(--paper); color: var(--ink); font-family: "Atkinson Hyperlegible", sans-serif; }
+  header { position: absolute; top: 40px; left: 56px; right: 56px; display: flex; justify-content: space-between; align-items: baseline; border-bottom: 3px solid var(--ink); padding-bottom: 14px; }
+  .model { font-size: 15px; letter-spacing: .12em; text-transform: uppercase; font-weight: 700; }
+  header nav { display: flex; gap: 28px; font-size: 15px; }
+  header a { color: var(--ink); text-decoration: none; }
+  .title { position: absolute; left: 56px; top: 132px; width: 520px; }
+  .title h1 { font-size: 64px; line-height: 1.02; font-weight: 700; letter-spacing: -.01em; }
+  .title p { margin-top: 22px; font-size: 20px; line-height: 1.5; }
+  .parts { position: absolute; left: 56px; top: 520px; width: 520px; border: 2px solid var(--ink); }
+  .parts h2 { font-size: 13px; letter-spacing: .14em; text-transform: uppercase; padding: 10px 14px; border-bottom: 2px solid var(--ink); }
+  .parts ul { list-style: none; padding: 0; display: grid; grid-template-columns: 1fr 1fr; }
+  .parts li { padding: 12px 14px; font-size: 16px; border-top: 1px solid var(--rule); }
+  .parts li b { display: inline-block; min-width: 34px; }
+  .help { position: absolute; left: 56px; top: 760px; display: flex; gap: 16px; align-items: center; }
+  .btn { display: inline-flex; align-items: center; height: 54px; padding: 0 26px; background: var(--blue); color: #fff; font-weight: 700; font-size: 18px; text-decoration: none; border-radius: 27px; }
+  .btn.ghost { background: transparent; color: var(--ink); border: 2px solid var(--ink); }
+  .drawing { position: absolute; left: 660px; top: 120px; width: 724px; height: 700px; }
+  .step { position: absolute; top: 0; left: 0; width: 64px; height: 64px; border: 3px solid var(--ink); border-radius: 50%; display: grid; place-items: center; font-size: 30px; font-weight: 700; }
+  .drawing svg { position: absolute; left: 40px; top: 40px; }
+  .iso { fill: #fff; stroke: var(--ink); stroke-width: 2.5; stroke-linejoin: round; }
+  .side { fill: #e4e6ea; stroke: var(--ink); stroke-width: 2.5; stroke-linejoin: round; }
+  .ai { fill: var(--blue); stroke: var(--ink); stroke-width: 2.5; stroke-linejoin: round; }
+  .lbl { font: 700 15px "Atkinson Hyperlegible", sans-serif; fill: var(--ink); }
+  .note { position: absolute; right: 0; bottom: 0; font-size: 13px; color: #555; }
+</style>
+</head>
+<body>
+  <header>
+    <span class="model">Modelo DBC · Full-stack + IA</span>
+    <nav><a href="#">Qué hago</a><a href="#">Cómo trabajo</a><a href="#">ES · EN</a></nav>
+  </header>
+  <section class="title">
+    <h1>David Balaguer Cervera</h1>
+    <p>Full-stack que integra IA en producto: monto sistemas completos y encajo la IA y la automatización como una pieza más, con sus tornillos.</p>
+  </section>
+  <section class="parts">
+    <h2>Piezas incluidas</h2>
+    <ul>
+      <li><b>1×</b> Frontend</li><li><b>1×</b> Backend</li>
+      <li><b>1×</b> Integración IA</li><li><b>1×</b> Automatización</li>
+    </ul>
+  </section>
+  <div class="help">
+    <a class="btn" href="mailto:davidbalaguercervera@gmail.com">¿Dudas? Escríbeme</a>
+    <a class="btn ghost" href="https://www.linkedin.com/in/david-balaguer-cervera/">LinkedIn</a>
+  </div>
+  <div class="drawing" aria-hidden="true">
+    <div class="step">4</div>
+    <svg width="660" height="640" viewBox="0 0 660 640">
+      <!-- base slab -->
+      <path class="iso" d="M330 420l240 -120 0 0 -240 -120 -240 120z"/>
+      <path class="side" d="M90 300v50l240 120v-50z"/><path class="side" d="M570 300v50L330 470v-50z"/>
+      <text class="lbl" x="560" y="400">A · Backend</text>
+      <!-- middle slab with empty socket -->
+      <path class="iso" d="M330 300l200 -100 -200 -100 -200 100z"/>
+      <path class="side" d="M130 200v40l200 100v-40z"/><path class="side" d="M530 200v40L330 340v-40z"/>
+      <path d="M330 240l70 -35 -70 -35 -70 35z" fill="#121314" opacity=".85"/>
+      <text class="lbl" x="530" y="270">B · Frontend</text>
+      <!-- AI module descending -->
+      <path class="ai" d="M330 110l70 -35 -70 -35 -70 35z"/>
+      <path class="ai" d="M260 75v40l70 35v-40z" opacity=".8"/><path class="ai" d="M400 75v40l-70 35v-40z" opacity=".65"/>
+      <path d="M330 160v40" stroke="#121314" stroke-width="2.5" stroke-dasharray="6 6"/>
+      <path d="M318 188l12 16 12-16" fill="none" stroke="#121314" stroke-width="2.5"/>
+      <text class="lbl" x="420" y="70">C · Módulo IA</text>
+      <!-- automation cable -->
+      <path d="M570 330c60 20 60 120 -10 150" fill="none" stroke="#121314" stroke-width="3"/>
+      <text class="lbl" x="470" y="520">D · Automatización</text>
+    </svg>
+    <p class="note">Fig. 4 · el módulo IA encaja en su hueco; sin piezas sobrantes</p>
+  </div>
+</body>
+</html>
